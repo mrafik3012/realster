@@ -1,0 +1,89 @@
+// Realster — Prisma schema
+// SQLite is used for this demo so the app runs anywhere with zero external
+// services. Swap the datasource provider/url to Postgres for production.
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum PropertyType {
+  HOUSE
+  APARTMENT
+  CONDO
+  TOWNHOUSE
+  LAND
+  COMMERCIAL
+}
+
+enum ListingType {
+  SALE
+  RENT
+}
+
+enum PropertyStatus {
+  ACTIVE
+  PENDING
+  SOLD
+}
+
+model Agent {
+  id           String     @id @default(cuid())
+  name         String
+  email        String     @unique
+  passwordHash String
+  title        String     @default("Listing Agent")
+  phone        String
+  bio          String
+  licenseNo    String
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  properties   Property[]
+}
+
+model Property {
+  id            String         @id @default(cuid())
+  slug          String         @unique
+  title         String
+  description   String
+  price         Int
+  listingType   ListingType    @default(SALE)
+  propertyType  PropertyType
+  status        PropertyStatus @default(ACTIVE)
+  bedrooms      Int
+  bathrooms     Int
+  areaSqft      Int
+  yearBuilt     Int?
+  address       String
+  city          String
+  state         String
+  zip           String
+  featured      Boolean        @default(false)
+  amenities     String         @default("")
+  images        PropertyImage[]
+  agentId       String
+  agent         Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  @@index([agentId])
+  @@index([city])
+  @@index([propertyType])
+  @@index([listingType])
+}
+
+model PropertyImage {
+  id         String   @id @default(cuid())
+  url        String
+  alt        String   @default("")
+  position   Int      @default(0)
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+}
