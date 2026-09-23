@@ -1,7 +1,7 @@
 # Realster Brand Guidelines v2.0
 
 > Last updated: 23 September 2026
-> Status: Locked for the Coimbatore land marketplace
+> Status: Locked for the Coimbatore land-and-homes marketplace
 > Source: UI-UX Pro Max brand + design-system skills
 
 ## Quick Reference
@@ -10,7 +10,7 @@
 |---------|-------|
 | Brand | Realster |
 | Home market | Coimbatore, Tamil Nadu |
-| Focus | Land first — plots, farms, agricultural and industrial parcels |
+| Focus | Land and homes — plots, farms, houses, and apartments |
 | Primary | `#1B6D8C` (logo teal) |
 | Secondary | `#102A43` (logo navy) |
 | Earth accent | `#6B7D3A` (coconut-grove green) |

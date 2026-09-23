@@ -84,7 +84,7 @@ export const Hero = () => {
             fontFamily: "Plus Jakarta Sans, Inter, sans-serif",
           }}
         >
-          Land in Coimbatore
+          Land & homes in Coimbatore
         </div>
         <div
           style={{
@@ -116,7 +116,7 @@ export const Hero = () => {
             fontFamily: "Inter, sans-serif",
           }}
         >
-          Plots · Farms · Agricultural · Industrial
+          Plots · Farms · Houses · Apartments
         </div>
       </AbsoluteFill>
     </AbsoluteFill>

@@ -66,7 +66,13 @@ export function PropertyCard({ property }: { property: PropertyCardData }) {
           <p className="font-heading text-lg font-semibold text-foreground">
             {formatPrice(property.price, property.listingType as "SALE" | "RENT")}
           </p>
-          <span className="shrink-0 rounded-full bg-[var(--color-land)]/15 px-2 py-0.5 text-xs font-medium text-[var(--color-land)]">
+          <span
+            className={
+              land
+                ? "shrink-0 rounded-full bg-[var(--color-land)]/15 px-2 py-0.5 text-xs font-medium text-[var(--color-land)]"
+                : "shrink-0 rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary"
+            }
+          >
             {PROPERTY_TYPE_LABELS[property.propertyType]}
           </span>
         </div>

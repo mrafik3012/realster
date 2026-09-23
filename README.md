@@ -1,15 +1,12 @@
 # Realster
 
-Realster is a **Coimbatore, Tamil Nadu** land marketplace: a public site
-for browsing plots, farms, agricultural parcels, and industrial sites,
+Realster is a **Coimbatore, Tamil Nadu** marketplace for **land and
+homes**: a public site for browsing plots, farms, houses, and apartments,
 plus an authenticated dashboard where licensed agents publish and manage
 their own listings.
 
-Houses exist on the platform but they are secondary. The seed book is
-land-first.
-
-This is a demo/portfolio build. The 3 agents and 15 listings that ship
-in the seed data are fictional. Land photography is stock imagery.
+This is a demo/portfolio build. The 3 agents and 21 listings that ship
+in the seed data are fictional. Photography is stock imagery.
 
 ## Stack
 
@@ -22,10 +19,12 @@ in the seed data are fictional. Land photography is stock imagery.
 ## Features
 
 **Public site**
-- Home page with hero search, featured listings, and "browse by city"
-- `/properties` — search + filters (city, listing type, property type,
-  min bedrooms, price range) with pagination
-- `/properties/[slug]` — property detail with photo gallery, amenities,
+- Home page with hero search, featured land, featured homes, and browse-by-locality
+- `/properties` — search + filters (category, city, listing type, property type,
+  price range) with pagination
+- `/properties?category=land` and `/properties?category=homes` — first-class
+  catalogs for land vs built property
+- `/properties/[slug]` — listing detail with photo gallery, amenities,
   and a direct contact card for the listing agent (call/email)
 - `/agents` and `/agents/[id]` — agent directory and profile pages with
   their active listings
@@ -36,8 +35,8 @@ in the seed data are fictional. Land photography is stock imagery.
 - `/dashboard` — overview with listing counts by status
 - `/dashboard/properties` — manage your own listings (edit / delete)
 - `/dashboard/properties/new` and `/dashboard/properties/[id]/edit` — full
-  listing form with multi-photo upload, drag-free file picker with
-  previews, and per-photo removal
+  listing form with multi-photo upload, file picker with previews, and
+  per-photo removal
 - Routes under `/dashboard` are protected by middleware (`src/proxy.ts`)
   and re-checked server-side in each page/action
 
@@ -45,7 +44,7 @@ in the seed data are fictional. Land photography is stock imagery.
 
 ```bash
 npm install
-npm run db:seed   # creates prisma/dev.db and seeds 3 agents + 15 listings
+npm run db:seed   # creates prisma/dev.db and seeds 3 agents + 21 listings
 npm run dev       # http://localhost:4127
 ```
 

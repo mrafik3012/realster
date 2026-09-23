@@ -46,8 +46,8 @@ export async function registerAgent(
       passwordHash,
       phone: parsed.data.phone,
       licenseNo: parsed.data.licenseNo,
-      title: parsed.data.title || "Land Agent",
-      bio: parsed.data.bio || "Realster land agent covering Coimbatore and nearby taluks.",
+      title: parsed.data.title || "Listing Agent",
+      bio: parsed.data.bio || "Realster agent covering land and homes across Coimbatore and nearby taluks.",
     },
   });
 

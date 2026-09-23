@@ -19,6 +19,7 @@ enum PropertyType {
   INDUSTRIAL
   COMMERCIAL
   HOUSE
+  APARTMENT
 }
 
 enum AreaUnit {
@@ -43,7 +44,7 @@ model Agent {
   name         String
   email        String     @unique
   passwordHash String
-  title        String     @default("Land Agent")
+  title        String     @default("Listing Agent")
   phone        String
   bio          String
   licenseNo    String

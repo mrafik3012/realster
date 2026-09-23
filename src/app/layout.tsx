@@ -16,11 +16,11 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Realster — Land in Coimbatore",
+    default: "Realster — Land and homes in Coimbatore",
     template: "%s | Realster",
   },
   description:
-    "Realster is a Coimbatore land marketplace for plots, farms, agricultural parcels, and industrial sites — listed by licensed local agents.",
+    "Realster is a Coimbatore marketplace for land and homes — plots, farms, houses, and apartments listed by licensed local agents.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

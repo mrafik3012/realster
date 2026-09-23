@@ -22,7 +22,7 @@ export const propertySchema = z.object({
   description: z.string().trim().min(40, "Add a bit more description (40+ characters)").max(4000),
   price: z.coerce.number().int().min(1, "Enter a valid price in rupees"),
   listingType: z.enum(["SALE", "RENT"]),
-  propertyType: z.enum(["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL", "HOUSE"]),
+  propertyType: z.enum(["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL", "HOUSE", "APARTMENT"]),
   status: z.enum(["ACTIVE", "PENDING", "SOLD"]).default("ACTIVE"),
   bedrooms: z.preprocess(
     (v) => (v === "" || v === null || v === undefined ? undefined : v),

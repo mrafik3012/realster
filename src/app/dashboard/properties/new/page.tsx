@@ -8,9 +8,9 @@ export default function NewPropertyPage() {
   return (
     <div className="mx-auto max-w-3xl space-y-6">
       <div>
-        <h1 className="font-heading text-2xl font-bold text-foreground">Add a land listing</h1>
+        <h1 className="font-heading text-2xl font-bold text-foreground">Add a listing</h1>
         <p className="text-sm text-muted-foreground">
-          Extent, locality, and at least one photo. Houses are optional.
+          Land or a home — locality, extent or built-up area, and at least one photo.
         </p>
       </div>
       <PropertyForm mode="create" action={createProperty} submitLabel="Publish listing" />

@@ -5,8 +5,8 @@ import { PropertyPagination } from "@/components/property-pagination";
 import { getProperties, getDistinctCities } from "@/lib/data/properties";
 
 export const metadata: Metadata = {
-  title: "Land for sale in Coimbatore",
-  description: "Plots, farms, agricultural and industrial land listed by Realster agents in Coimbatore.",
+  title: "Land and properties in Coimbatore",
+  description: "Plots, farms, houses, and apartments listed by Realster agents in Coimbatore.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -24,6 +24,7 @@ export default async function PropertiesPage({
 
   const q = first(sp.q) || undefined;
   const city = first(sp.city) || undefined;
+  const category = first(sp.category) || undefined;
   const propertyType = first(sp.propertyType) || undefined;
   const listingType = first(sp.listingType) || undefined;
   const minPrice = first(sp.minPrice) ? Number(first(sp.minPrice)) : undefined;
@@ -31,7 +32,7 @@ export default async function PropertiesPage({
   const bedrooms = first(sp.bedrooms) ? Number(first(sp.bedrooms)) : undefined;
   const page = first(sp.page) ? Number(first(sp.page)) : 1;
 
-  const filters = { q, city, propertyType, listingType, minPrice, maxPrice, bedrooms, page };
+  const filters = { q, city, category, propertyType, listingType, minPrice, maxPrice, bedrooms, page };
 
   const [{ items, total, pageCount }, cities] = await Promise.all([
     getProperties(filters),
@@ -41,6 +42,7 @@ export default async function PropertiesPage({
   const baseParams: Record<string, string | undefined> = {
     q,
     city,
+    category,
     propertyType,
     listingType,
     minPrice: minPrice?.toString(),
@@ -52,10 +54,14 @@ export default async function PropertiesPage({
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-6">
         <h1 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
-          Land around Coimbatore
+          {category === "land"
+            ? "Land around Coimbatore"
+            : category === "homes"
+              ? "Homes around Coimbatore"
+              : "Land and properties in Coimbatore"}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          {total} {total === 1 ? "parcel" : "parcels"} match your search.
+          {total} {total === 1 ? "listing" : "listings"} match your search.
         </p>
       </div>
 

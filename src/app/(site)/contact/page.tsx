@@ -15,7 +15,7 @@ export default function ContactPage() {
           Get in touch
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Questions about a parcel should go to the agent on that listing.
+          Questions about a listing should go to the agent on that page.
           For platform questions, agent accounts, or anything else about
           the Coimbatore desk — send a note.
         </p>

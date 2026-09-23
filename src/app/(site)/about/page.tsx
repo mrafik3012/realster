@@ -1,24 +1,25 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { LandPlot, UserCheck, KeyRound, ScrollText } from "lucide-react";
+import { Building2, LandPlot, UserCheck, KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About Realster",
-  description: "A Coimbatore land marketplace — plots, farms, and industrial parcels.",
+  description:
+    "A Coimbatore marketplace for land and homes — plots, farms, houses, and apartments.",
 };
 
 const steps = [
   {
     icon: LandPlot,
-    title: "Search land first",
-    body: "Filter by locality and type — residential plots, agricultural land, farms, industrial or commercial parcels around Coimbatore.",
+    title: "Search land or a home",
+    body: "Filter by locality and type — residential plots, agricultural land, farms, industrial parcels, houses, or apartments around Coimbatore.",
   },
   {
-    icon: ScrollText,
-    title: "Read the parcel, not the brochure",
-    body: "Extent in cents or acres, road frontage, water, DTCP or LPA status, and the survey number sit on the listing.",
+    icon: Building2,
+    title: "Read the listing, not the brochure",
+    body: "Land carries extent, frontage, water, and DTCP or LPA status. Homes carry bedrooms, parking, and association papers.",
   },
   {
     icon: UserCheck,
@@ -38,12 +39,12 @@ export default function AboutPage() {
       <section className="survey-grid border-b border-border">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-            A Coimbatore land desk, not a national house portal.
+            A Coimbatore desk for land and homes.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Realster is based in Coimbatore, Tamil Nadu. The inventory is
-            land: plots, groves, farms, and industrial parcels. Houses show
-            up only when they sit next to that work.
+            both: plots, groves, farms, and industrial parcels, and the
+            independent houses and apartments that sit next to that work.
           </p>
         </div>
       </section>
@@ -60,18 +61,18 @@ export default function AboutPage() {
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold text-foreground">
-              Why land, and why here
+              Why both, and why here
             </h2>
             <p className="text-foreground/90">
               Coimbatore buyers already speak in cents, Patta, and survey
-              numbers. National house sites bury that under bedrooms and
-              swimming-pool filters. Realster flips the default: extent and
-              locality first, house details only if the listing is a house.
+              numbers — and in BHK, car porch, and association dues. National
+              portals bury one under the other. Realster keeps both first-class:
+              extent and locality for land, bedrooms and parking for a house.
             </p>
             <p className="text-foreground/90">
-              Agents around Pollachi, Sulur, Annur, and Mettupalayam maintain
-              their own listings. If a price changes or a parcel goes under
-              token, they update it from the dashboard.
+              Agents around Pollachi, Sulur, Annur, RS Puram, and Mettupalayam
+              maintain their own listings. If a price changes or a property
+              goes under token, they update it from the dashboard.
             </p>
           </div>
         </div>
@@ -99,8 +100,8 @@ export default function AboutPage() {
           Are you a licensed agent in Tamil Nadu?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Create a free account, add your RERA number, and list land you
-          already represent.
+          Create a free account, add your RERA number, and list land or
+          homes you already represent.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link href="/register">

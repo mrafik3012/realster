@@ -5,10 +5,20 @@ const columns = [
   {
     title: "Land",
     links: [
+      { href: "/properties?category=land", label: "All land" },
       { href: "/properties?propertyType=PLOT", label: "Residential plots" },
       { href: "/properties?propertyType=AGRICULTURAL", label: "Agricultural land" },
       { href: "/properties?propertyType=FARM", label: "Farm land" },
       { href: "/properties?propertyType=INDUSTRIAL", label: "Industrial land" },
+    ],
+  },
+  {
+    title: "Homes",
+    links: [
+      { href: "/properties?category=homes", label: "All homes" },
+      { href: "/properties?propertyType=HOUSE", label: "Houses" },
+      { href: "/properties?propertyType=APARTMENT", label: "Apartments" },
+      { href: "/properties?listingType=RENT&category=homes", label: "Homes for rent" },
     ],
   },
   {
@@ -17,7 +27,7 @@ const columns = [
       { href: "/about", label: "About us" },
       { href: "/agents", label: "Find an agent" },
       { href: "/contact", label: "Contact" },
-      { href: "/register", label: "List your land" },
+      { href: "/register", label: "List a property" },
       { href: "/login", label: "Agent login" },
     ],
   },
@@ -27,13 +37,13 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-secondary text-secondary-foreground">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div className="space-y-3">
             <Logo dark />
             <p className="max-w-sm text-sm text-secondary-foreground/70">
-              Coimbatore land marketplace. Plots, farms, agricultural and
-              industrial parcels — listed by licensed agents, not scraped
-              from somewhere else.
+              Coimbatore marketplace for land and homes. Plots, farms,
+              houses, and apartments — listed by licensed agents, not
+              scraped from somewhere else.
             </p>
             <p className="text-sm text-secondary-foreground/60">
               Coimbatore, Tamil Nadu
@@ -63,7 +73,7 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-secondary-foreground/60 sm:flex-row">
           <p>© {new Date().getFullYear()} Realster, Coimbatore. All rights reserved.</p>
-          <p>Demo listings. Agents and parcels are fictional.</p>
+          <p>Demo listings. Agents and properties are fictional.</p>
         </div>
       </div>
     </footer>

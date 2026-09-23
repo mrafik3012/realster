@@ -59,11 +59,14 @@ export const PROPERTY_TYPE_LABELS: Record<string, string> = {
   INDUSTRIAL: "Industrial land",
   COMMERCIAL: "Commercial plot",
   HOUSE: "House",
+  APARTMENT: "Apartment",
 };
+
+export const HOME_TYPES = ["HOUSE", "APARTMENT"] as const;
 
 export const LISTING_TYPE_LABELS: Record<string, string> = {
   SALE: "For sale",
-  RENT: "For lease",
+  RENT: "For rent",
 };
 
 export const STATUS_LABELS: Record<string, string> = {

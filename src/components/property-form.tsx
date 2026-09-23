@@ -121,7 +121,7 @@ export function PropertyForm({
             id="title"
             name="title"
             defaultValue={values.title}
-            placeholder="e.g. 12-cent DTCP plot, Kalapatti"
+            placeholder="e.g. 12-cent DTCP plot, Kalapatti or 3 BHK, RS Puram"
             required
           />
           {state?.fieldErrors?.title && (
@@ -136,7 +136,7 @@ export function PropertyForm({
             name="description"
             defaultValue={values.description}
             rows={5}
-            placeholder="Survey number, road frontage, water, DTCP / Patta status, and how the land sits."
+            placeholder="For land: survey number, frontage, water, DTCP / Patta. For a home: bedrooms, parking, association."
             required
           />
           {state?.fieldErrors?.description && (
@@ -149,18 +149,23 @@ export function PropertyForm({
             <Label htmlFor="listingType">Listing type</Label>
             <select id="listingType" name="listingType" defaultValue={values.listingType} className={selectClass}>
               <option value="SALE">For sale</option>
-              <option value="RENT">For lease</option>
+              <option value="RENT">For rent</option>
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="propertyType">Land type</Label>
+            <Label htmlFor="propertyType">Property type</Label>
             <select id="propertyType" name="propertyType" defaultValue={values.propertyType} className={selectClass}>
-              <option value="PLOT">Residential plot</option>
-              <option value="AGRICULTURAL">Agricultural land</option>
-              <option value="FARM">Farm land</option>
-              <option value="INDUSTRIAL">Industrial land</option>
-              <option value="COMMERCIAL">Commercial plot</option>
-              <option value="HOUSE">House</option>
+              <optgroup label="Land">
+                <option value="PLOT">Residential plot</option>
+                <option value="AGRICULTURAL">Agricultural land</option>
+                <option value="FARM">Farm land</option>
+                <option value="INDUSTRIAL">Industrial land</option>
+                <option value="COMMERCIAL">Commercial plot</option>
+              </optgroup>
+              <optgroup label="Homes">
+                <option value="HOUSE">House</option>
+                <option value="APARTMENT">Apartment</option>
+              </optgroup>
             </select>
           </div>
           <div className="space-y-1.5">
@@ -215,19 +220,19 @@ export function PropertyForm({
           </div>
         </div>
         <p className="text-xs text-muted-foreground">
-          Bedrooms and year built are only needed for houses — leave them blank for land.
+          Bedrooms and year built are for houses and apartments — leave them blank for land.
         </p>
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="space-y-1.5">
-            <Label htmlFor="bedrooms">Bedrooms (houses only)</Label>
+            <Label htmlFor="bedrooms">Bedrooms (homes)</Label>
             <Input id="bedrooms" name="bedrooms" type="number" min={0} defaultValue={values.bedrooms ?? ""} />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="bathrooms">Bathrooms (houses only)</Label>
+            <Label htmlFor="bathrooms">Bathrooms (homes)</Label>
             <Input id="bathrooms" name="bathrooms" type="number" min={0} defaultValue={values.bathrooms ?? ""} />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="yearBuilt">Year built (houses only)</Label>
+            <Label htmlFor="yearBuilt">Year built (homes)</Label>
             <Input
               id="yearBuilt"
               name="yearBuilt"

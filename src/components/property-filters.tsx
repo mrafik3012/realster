@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import type { PropertyFilters as Filters } from "@/lib/data/properties";
+import { ListingTypeOptions } from "@/components/listing-type-options";
 
 const selectClass =
   "h-10 w-full rounded-lg border border-input bg-background px-3 text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50";
@@ -30,6 +31,17 @@ export function PropertyFiltersBar({
         />
       </div>
 
+      <select
+        name="category"
+        defaultValue={filters.category ?? ""}
+        className={selectClass}
+        aria-label="Land or homes"
+      >
+        <option value="">Land and homes</option>
+        <option value="land">Land only</option>
+        <option value="homes">Homes only</option>
+      </select>
+
       <select name="city" defaultValue={filters.city ?? ""} className={selectClass} aria-label="Locality">
         <option value="">All Coimbatore localities</option>
         {cities.map((c) => (
@@ -43,26 +55,33 @@ export function PropertyFiltersBar({
         name="propertyType"
         defaultValue={filters.propertyType ?? ""}
         className={selectClass}
-        aria-label="Land type"
+        aria-label="Listing type"
       >
-        <option value="">All land types</option>
-        <option value="PLOT">Residential plot</option>
-        <option value="AGRICULTURAL">Agricultural land</option>
-        <option value="FARM">Farm land</option>
-        <option value="INDUSTRIAL">Industrial land</option>
-        <option value="COMMERCIAL">Commercial plot</option>
-        <option value="HOUSE">House</option>
+        <ListingTypeOptions />
       </select>
 
       <select
         name="listingType"
         defaultValue={filters.listingType ?? ""}
         className={selectClass}
-        aria-label="For sale or lease"
+        aria-label="For sale or rent"
       >
-        <option value="">Sale or lease</option>
+        <option value="">Sale or rent</option>
         <option value="SALE">For sale</option>
-        <option value="RENT">For lease</option>
+        <option value="RENT">For rent</option>
+      </select>
+
+      <select
+        name="bedrooms"
+        defaultValue={filters.bedrooms?.toString() ?? ""}
+        className={selectClass}
+        aria-label="Bedrooms"
+      >
+        <option value="">Any bedrooms</option>
+        <option value="1">1+ bedrooms</option>
+        <option value="2">2+ bedrooms</option>
+        <option value="3">3+ bedrooms</option>
+        <option value="4">4+ bedrooms</option>
       </select>
 
       <Input

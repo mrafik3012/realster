@@ -137,7 +137,7 @@ export default async function PropertyDetailPage({
 
           <div>
             <h2 className="mb-2 font-heading text-lg font-semibold text-foreground">
-              About this land
+              About this listing
             </h2>
             <p className="whitespace-pre-line leading-relaxed text-foreground/90">
               {property.description}
@@ -210,7 +210,7 @@ export default async function PropertyDetailPage({
       {similar.length > 0 && (
         <section className="mt-16">
           <h2 className="mb-6 font-heading text-xl font-bold text-foreground">
-            Nearby land
+            Similar listings
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {similar.map((item) => (

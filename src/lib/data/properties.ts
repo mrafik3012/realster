@@ -7,6 +7,7 @@ export const PAGE_SIZE = 9;
 export type PropertyFilters = {
   q?: string;
   city?: string;
+  category?: string;
   propertyType?: string;
   listingType?: string;
   minPrice?: number;
@@ -27,7 +28,13 @@ function buildWhere(filters: PropertyFilters): Prisma.PropertyWhereInput {
     ];
   }
   if (filters.city) where.city = { equals: filters.city };
-  if (filters.propertyType) where.propertyType = filters.propertyType as Prisma.EnumPropertyTypeFilter["equals"];
+  if (filters.propertyType) {
+    where.propertyType = filters.propertyType as Prisma.EnumPropertyTypeFilter["equals"];
+  } else if (filters.category === "land") {
+    where.propertyType = { in: ["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL"] };
+  } else if (filters.category === "homes") {
+    where.propertyType = { in: ["HOUSE", "APARTMENT"] };
+  }
   if (filters.listingType) where.listingType = filters.listingType as Prisma.EnumListingTypeFilter["equals"];
   if (filters.bedrooms) where.bedrooms = { gte: filters.bedrooms };
   if (filters.minPrice || filters.maxPrice) {
@@ -63,9 +70,20 @@ export async function getProperties(filters: PropertyFilters = {}) {
   };
 }
 
-export async function getFeaturedProperties(limit = 6) {
+export async function getFeaturedProperties(limit = 6, category?: "land" | "homes") {
+  const typeFilter =
+    category === "land"
+      ? { in: ["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL"] as const }
+      : category === "homes"
+        ? { in: ["HOUSE", "APARTMENT"] as const }
+        : undefined;
+
   return prisma.property.findMany({
-    where: { featured: true, status: "ACTIVE" },
+    where: {
+      featured: true,
+      status: "ACTIVE",
+      ...(typeFilter ? { propertyType: typeFilter } : {}),
+    },
     include: { images: { orderBy: { position: "asc" }, take: 1 }, agent: true },
     orderBy: { createdAt: "desc" },
     take: limit,
