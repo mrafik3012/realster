@@ -25,7 +25,7 @@ import { initials } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/properties", label: "Properties" },
+  { href: "/properties", label: "Land" },
   { href: "/agents", label: "Agents" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -59,7 +59,7 @@ export async function SiteHeader() {
                 className={cn(buttonVariants({ variant: "outline", size: "sm" }), "gap-1.5")}
               >
                 <PlusCircle className="size-4" />
-                List a property
+                List your land
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-2 rounded-full p-1 pr-3 outline-none ring-offset-2 transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring">
@@ -96,7 +96,7 @@ export async function SiteHeader() {
                 Agent login
               </Link>
               <Link href="/register" className={buttonVariants({ variant: "default", size: "sm" })}>
-                List a property
+                List your land
               </Link>
             </>
           )}
@@ -150,7 +150,7 @@ export async function SiteHeader() {
                       Agent login
                     </SheetClose>
                     <SheetClose render={<Link href="/register" className={buttonVariants({ variant: "default" })} />}>
-                      List a property
+                      List your land
                     </SheetClose>
                   </>
                 )}

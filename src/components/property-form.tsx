@@ -23,9 +23,10 @@ type PropertyFormValues = {
   listingType: string;
   propertyType: string;
   status: string;
-  bedrooms: number;
-  bathrooms: number;
+  bedrooms?: number | null;
+  bathrooms?: number | null;
   areaSqft: number;
+  areaUnit: string;
   yearBuilt: number | null;
   address: string;
   city: string;
@@ -40,15 +41,16 @@ const emptyValues: PropertyFormValues = {
   description: "",
   price: 0,
   listingType: "SALE",
-  propertyType: "HOUSE",
+  propertyType: "PLOT",
   status: "ACTIVE",
-  bedrooms: 3,
-  bathrooms: 2,
-  areaSqft: 1500,
+  bedrooms: undefined,
+  bathrooms: undefined,
+  areaSqft: 10,
+  areaUnit: "CENTS",
   yearBuilt: null,
   address: "",
   city: "",
-  state: "",
+  state: "Tamil Nadu",
   zip: "",
   featured: false,
   amenities: "",
@@ -119,7 +121,7 @@ export function PropertyForm({
             id="title"
             name="title"
             defaultValue={values.title}
-            placeholder="e.g. Modern Hillside Retreat"
+            placeholder="e.g. 12-cent DTCP plot, Kalapatti"
             required
           />
           {state?.fieldErrors?.title && (
@@ -134,7 +136,7 @@ export function PropertyForm({
             name="description"
             defaultValue={values.description}
             rows={5}
-            placeholder="Describe the property, its layout, and standout features."
+            placeholder="Survey number, road frontage, water, DTCP / Patta status, and how the land sits."
             required
           />
           {state?.fieldErrors?.description && (
@@ -147,18 +149,18 @@ export function PropertyForm({
             <Label htmlFor="listingType">Listing type</Label>
             <select id="listingType" name="listingType" defaultValue={values.listingType} className={selectClass}>
               <option value="SALE">For sale</option>
-              <option value="RENT">For rent</option>
+              <option value="RENT">For lease</option>
             </select>
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="propertyType">Property type</Label>
+            <Label htmlFor="propertyType">Land type</Label>
             <select id="propertyType" name="propertyType" defaultValue={values.propertyType} className={selectClass}>
+              <option value="PLOT">Residential plot</option>
+              <option value="AGRICULTURAL">Agricultural land</option>
+              <option value="FARM">Farm land</option>
+              <option value="INDUSTRIAL">Industrial land</option>
+              <option value="COMMERCIAL">Commercial plot</option>
               <option value="HOUSE">House</option>
-              <option value="APARTMENT">Apartment</option>
-              <option value="CONDO">Condo</option>
-              <option value="TOWNHOUSE">Townhouse</option>
-              <option value="LAND">Land</option>
-              <option value="COMMERCIAL">Commercial</option>
             </select>
           </div>
           <div className="space-y-1.5">
@@ -173,14 +175,14 @@ export function PropertyForm({
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="price">Price (USD, monthly if renting)</Label>
+            <Label htmlFor="price">Price (₹, full amount)</Label>
             <Input
               id="price"
               name="price"
               type="number"
               min={1}
               defaultValue={values.price || ""}
-              placeholder="750000"
+              placeholder="9600000"
               required
             />
             {state?.fieldErrors?.price && (
@@ -198,21 +200,34 @@ export function PropertyForm({
 
       <section className="space-y-4 rounded-xl border border-border bg-card p-5">
         <h2 className="font-heading text-base font-semibold text-foreground">Details</h2>
-        <div className="grid gap-4 sm:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           <div className="space-y-1.5">
-            <Label htmlFor="bedrooms">Bedrooms</Label>
-            <Input id="bedrooms" name="bedrooms" type="number" min={0} defaultValue={values.bedrooms} required />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="bathrooms">Bathrooms</Label>
-            <Input id="bathrooms" name="bathrooms" type="number" min={0} defaultValue={values.bathrooms} required />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="areaSqft">Area (sqft)</Label>
+            <Label htmlFor="areaSqft">Extent</Label>
             <Input id="areaSqft" name="areaSqft" type="number" min={1} defaultValue={values.areaSqft} required />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="yearBuilt">Year built</Label>
+            <Label htmlFor="areaUnit">Unit</Label>
+            <select id="areaUnit" name="areaUnit" defaultValue={values.areaUnit} className={selectClass}>
+              <option value="CENTS">Cents</option>
+              <option value="ACRES">Acres</option>
+              <option value="SQFT">Sq.ft</option>
+            </select>
+          </div>
+        </div>
+        <p className="text-xs text-muted-foreground">
+          Bedrooms and year built are only needed for houses — leave them blank for land.
+        </p>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div className="space-y-1.5">
+            <Label htmlFor="bedrooms">Bedrooms (houses only)</Label>
+            <Input id="bedrooms" name="bedrooms" type="number" min={0} defaultValue={values.bedrooms ?? ""} />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="bathrooms">Bathrooms (houses only)</Label>
+            <Input id="bathrooms" name="bathrooms" type="number" min={0} defaultValue={values.bathrooms ?? ""} />
+          </div>
+          <div className="space-y-1.5">
+            <Label htmlFor="yearBuilt">Year built (houses only)</Label>
             <Input
               id="yearBuilt"
               name="yearBuilt"
@@ -230,7 +245,7 @@ export function PropertyForm({
             id="amenities"
             name="amenities"
             defaultValue={values.amenities}
-            placeholder="Covered patio, Attached garage, Pool"
+            placeholder="DTCP approved, Open well, 30-ft road, Clear Patta"
           />
         </div>
       </section>
@@ -243,15 +258,15 @@ export function PropertyForm({
         </div>
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="space-y-1.5">
-            <Label htmlFor="city">City</Label>
+            <Label htmlFor="city">Locality (e.g. Pollachi, Sulur)</Label>
             <Input id="city" name="city" defaultValue={values.city} required />
           </div>
           <div className="space-y-1.5">
             <Label htmlFor="state">State</Label>
-            <Input id="state" name="state" defaultValue={values.state} required />
+            <Input id="state" name="state" defaultValue={values.state || "Tamil Nadu"} required />
           </div>
           <div className="space-y-1.5">
-            <Label htmlFor="zip">ZIP code</Label>
+            <Label htmlFor="zip">Pincode</Label>
             <Input id="zip" name="zip" defaultValue={values.zip} required />
           </div>
         </div>

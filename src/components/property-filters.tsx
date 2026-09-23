@@ -25,65 +25,51 @@ export function PropertyFiltersBar({
         <Input
           name="q"
           defaultValue={filters.q ?? ""}
-          placeholder="City, neighborhood, or address"
+          placeholder="Locality or survey number"
           className="h-10 pl-9"
         />
       </div>
 
-      <select name="city" defaultValue={filters.city ?? ""} className={selectClass} aria-label="City">
-        <option value="">All cities</option>
+      <select name="city" defaultValue={filters.city ?? ""} className={selectClass} aria-label="Locality">
+        <option value="">All Coimbatore localities</option>
         {cities.map((c) => (
           <option key={c.city} value={c.city}>
-            {c.city}, {c.state}
+            {c.city}
           </option>
         ))}
-      </select>
-
-      <select
-        name="listingType"
-        defaultValue={filters.listingType ?? ""}
-        className={selectClass}
-        aria-label="For sale or rent"
-      >
-        <option value="">Buy or rent</option>
-        <option value="SALE">For sale</option>
-        <option value="RENT">For rent</option>
       </select>
 
       <select
         name="propertyType"
         defaultValue={filters.propertyType ?? ""}
         className={selectClass}
-        aria-label="Property type"
+        aria-label="Land type"
       >
-        <option value="">Any type</option>
+        <option value="">All land types</option>
+        <option value="PLOT">Residential plot</option>
+        <option value="AGRICULTURAL">Agricultural land</option>
+        <option value="FARM">Farm land</option>
+        <option value="INDUSTRIAL">Industrial land</option>
+        <option value="COMMERCIAL">Commercial plot</option>
         <option value="HOUSE">House</option>
-        <option value="APARTMENT">Apartment</option>
-        <option value="CONDO">Condo</option>
-        <option value="TOWNHOUSE">Townhouse</option>
-        <option value="LAND">Land</option>
-        <option value="COMMERCIAL">Commercial</option>
       </select>
 
       <select
-        name="bedrooms"
-        defaultValue={filters.bedrooms?.toString() ?? ""}
+        name="listingType"
+        defaultValue={filters.listingType ?? ""}
         className={selectClass}
-        aria-label="Minimum bedrooms"
+        aria-label="For sale or lease"
       >
-        <option value="">Any beds</option>
-        <option value="1">1+ beds</option>
-        <option value="2">2+ beds</option>
-        <option value="3">3+ beds</option>
-        <option value="4">4+ beds</option>
-        <option value="5">5+ beds</option>
+        <option value="">Sale or lease</option>
+        <option value="SALE">For sale</option>
+        <option value="RENT">For lease</option>
       </select>
 
       <Input
         type="number"
         name="minPrice"
         defaultValue={filters.minPrice ?? ""}
-        placeholder="Min price"
+        placeholder="Min ₹"
         className="h-10"
         min={0}
       />
@@ -91,7 +77,7 @@ export function PropertyFiltersBar({
         type="number"
         name="maxPrice"
         defaultValue={filters.maxPrice ?? ""}
-        placeholder="Max price"
+        placeholder="Max ₹"
         className="h-10"
         min={0}
       />

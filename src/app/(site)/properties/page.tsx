@@ -5,8 +5,8 @@ import { PropertyPagination } from "@/components/property-pagination";
 import { getProperties, getDistinctCities } from "@/lib/data/properties";
 
 export const metadata: Metadata = {
-  title: "Properties for sale and rent",
-  description: "Browse verified property listings from Realster agents.",
+  title: "Land for sale in Coimbatore",
+  description: "Plots, farms, agricultural and industrial land listed by Realster agents in Coimbatore.",
 };
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
@@ -52,10 +52,10 @@ export default async function PropertiesPage({
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-6">
         <h1 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
-          Properties
+          Land around Coimbatore
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          {total} {total === 1 ? "listing" : "listings"} match your search.
+          {total} {total === 1 ? "parcel" : "parcels"} match your search.
         </p>
       </div>
 

@@ -17,11 +17,11 @@ export default async function AgentsPage() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="mb-8 max-w-2xl">
         <h1 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
-          Meet the agents
+          Coimbatore land agents
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Every listing on Realster is managed directly by the agent below —
-          reach out to whoever holds the listing you&apos;re interested in.
+          Every parcel on Realster is managed by the agent below — reach
+          the person who actually holds the listing.
         </p>
       </div>
 

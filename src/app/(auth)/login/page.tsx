@@ -30,7 +30,7 @@ export default function LoginPage() {
       <div className="flex items-start gap-2 rounded-lg border border-border bg-background p-3 text-xs text-muted-foreground">
         <Info className="mt-0.5 size-3.5 shrink-0" />
         <p>
-          Demo account — <span className="font-medium text-foreground">maria@realster.com</span>{" "}
+          Demo account — <span className="font-medium text-foreground">kavitha@realster.com</span>{" "}
           / <span className="font-medium text-foreground">Realster123!</span>
         </p>
       </div>

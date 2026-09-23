@@ -3,20 +3,21 @@ import { Logo } from "@/components/logo";
 
 const columns = [
   {
-    title: "Explore",
+    title: "Land",
     links: [
-      { href: "/properties?listingType=SALE", label: "Homes for sale" },
-      { href: "/properties?listingType=RENT", label: "Homes for rent" },
-      { href: "/properties?propertyType=CONDO", label: "Condos" },
-      { href: "/agents", label: "Find an agent" },
+      { href: "/properties?propertyType=PLOT", label: "Residential plots" },
+      { href: "/properties?propertyType=AGRICULTURAL", label: "Agricultural land" },
+      { href: "/properties?propertyType=FARM", label: "Farm land" },
+      { href: "/properties?propertyType=INDUSTRIAL", label: "Industrial land" },
     ],
   },
   {
     title: "Realster",
     links: [
       { href: "/about", label: "About us" },
+      { href: "/agents", label: "Find an agent" },
       { href: "/contact", label: "Contact" },
-      { href: "/register", label: "List a property" },
+      { href: "/register", label: "List your land" },
       { href: "/login", label: "Agent login" },
     ],
   },
@@ -30,9 +31,12 @@ export function SiteFooter() {
           <div className="space-y-3">
             <Logo dark />
             <p className="max-w-sm text-sm text-secondary-foreground/70">
-              A property marketplace connecting buyers, renters, and licensed
-              agents. List a property, browse the market, or find an agent
-              who knows the neighborhood.
+              Coimbatore land marketplace. Plots, farms, agricultural and
+              industrial parcels — listed by licensed agents, not scraped
+              from somewhere else.
+            </p>
+            <p className="text-sm text-secondary-foreground/60">
+              Coimbatore, Tamil Nadu
             </p>
           </div>
 
@@ -58,8 +62,8 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-secondary-foreground/60 sm:flex-row">
-          <p>© {new Date().getFullYear()} Realster. All rights reserved.</p>
-          <p>This is a demo application. Listings and agents are fictional.</p>
+          <p>© {new Date().getFullYear()} Realster, Coimbatore. All rights reserved.</p>
+          <p>Demo listings. Agents and parcels are fictional.</p>
         </div>
       </div>
     </footer>

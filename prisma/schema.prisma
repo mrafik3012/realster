@@ -13,12 +13,18 @@ datasource db {
 }
 
 enum PropertyType {
-  HOUSE
-  APARTMENT
-  CONDO
-  TOWNHOUSE
-  LAND
+  PLOT
+  AGRICULTURAL
+  FARM
+  INDUSTRIAL
   COMMERCIAL
+  HOUSE
+}
+
+enum AreaUnit {
+  CENTS
+  ACRES
+  SQFT
 }
 
 enum ListingType {
@@ -37,7 +43,7 @@ model Agent {
   name         String
   email        String     @unique
   passwordHash String
-  title        String     @default("Listing Agent")
+  title        String     @default("Land Agent")
   phone        String
   bio          String
   licenseNo    String
@@ -55,9 +61,10 @@ model Property {
   listingType   ListingType    @default(SALE)
   propertyType  PropertyType
   status        PropertyStatus @default(ACTIVE)
-  bedrooms      Int
-  bathrooms     Int
+  bedrooms      Int?
+  bathrooms     Int?
   areaSqft      Int
+  areaUnit      AreaUnit       @default(CENTS)
   yearBuilt     Int?
   address       String
   city          String

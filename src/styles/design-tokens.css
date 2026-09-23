@@ -1,0 +1,64 @@
+/* Realster design tokens — generated from docs/design-tokens.json
+   Layering follows UI-UX Pro Max design-system skill:
+   primitive → semantic → component. Do not put raw hex in components. */
+
+:root {
+  /* Primitive */
+  --color-teal-600: #1b6d8c;
+  --color-teal-800: #124f66;
+  --color-navy-900: #102a43;
+  --color-grove-600: #6b7d3a;
+  --color-laterite-500: #c4784a;
+  --color-mist-50: #f4f1ea;
+  --color-mist-100: #e8e4d8;
+  --color-ink-900: #1a1c16;
+  --color-white: #fffdf8;
+
+  /* Semantic */
+  --color-primary: var(--color-teal-600);
+  --color-secondary: var(--color-navy-900);
+  --color-land: var(--color-grove-600);
+  --color-warm: var(--color-laterite-500);
+  --color-bg: var(--color-mist-50);
+  --color-surface: var(--color-white);
+  --color-fg: var(--color-ink-900);
+
+  /* Component */
+  --button-bg: var(--color-primary);
+  --card-bg: var(--color-surface);
+  --badge-land-bg: var(--color-land);
+
+  /* Mapped into shadcn / Tailwind semantic slots */
+  --background: var(--color-bg);
+  --foreground: var(--color-fg);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-fg);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--color-fg);
+  --primary: var(--color-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-secondary);
+  --secondary-foreground: #ffffff;
+  --muted: var(--color-mist-100);
+  --muted-foreground: #5c5a52;
+  --accent: #ebe6d6;
+  --accent-foreground: var(--color-navy-900);
+  --destructive: #c9463d;
+  --border: #d9d3c4;
+  --input: #d9d3c4;
+  --ring: var(--color-primary);
+  --chart-1: var(--color-teal-600);
+  --chart-2: var(--color-grove-600);
+  --chart-3: var(--color-navy-900);
+  --chart-4: var(--color-laterite-500);
+  --chart-5: #86a4b5;
+  --radius: 0.625rem;
+  --sidebar: var(--color-navy-900);
+  --sidebar-foreground: #eef3f6;
+  --sidebar-primary: var(--color-primary);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1a3a56;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #1a3a56;
+  --sidebar-ring: var(--color-primary);
+}

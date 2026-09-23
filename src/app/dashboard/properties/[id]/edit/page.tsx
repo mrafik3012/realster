@@ -41,6 +41,7 @@ export default async function EditPropertyPage({
           bedrooms: property.bedrooms,
           bathrooms: property.bathrooms,
           areaSqft: property.areaSqft,
+          areaUnit: property.areaUnit,
           yearBuilt: property.yearBuilt,
           address: property.address,
           city: property.city,

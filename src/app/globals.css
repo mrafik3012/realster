@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+@import "../styles/design-tokens.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,44 +49,7 @@
 }
 
 :root {
-  /* Realster brand tokens — sampled from the logo (teal mark + navy wordmark) */
-  --brand-teal: #1b6d8c;
-  --brand-teal-dark: #124f66;
-  --brand-navy: #102a43;
-  --brand-slate: #5c7c96;
-
-  --background: #f6f9fa;
-  --foreground: #10233a;
-  --card: #ffffff;
-  --card-foreground: #10233a;
-  --popover: #ffffff;
-  --popover-foreground: #10233a;
-  --primary: var(--brand-teal);
-  --primary-foreground: #ffffff;
-  --secondary: var(--brand-navy);
-  --secondary-foreground: #ffffff;
-  --muted: #e9eef1;
-  --muted-foreground: #5b6b78;
-  --accent: #e4eef2;
-  --accent-foreground: var(--brand-navy);
-  --destructive: #c9463d;
-  --border: #dde5e9;
-  --input: #dde5e9;
-  --ring: var(--brand-teal);
-  --chart-1: #1b6d8c;
-  --chart-2: #5c7c96;
-  --chart-3: #102a43;
-  --chart-4: #86a4b5;
-  --chart-5: #c9a86a;
-  --radius: 0.625rem;
-  --sidebar: var(--brand-navy);
-  --sidebar-foreground: #eef3f6;
-  --sidebar-primary: var(--brand-teal);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1a3a56;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #1a3a56;
-  --sidebar-ring: var(--brand-teal);
+  /* Color roles live in src/styles/design-tokens.css (UI-UX Pro Max layers). */
 }
 
 .dark {
@@ -137,5 +101,14 @@
   h3,
   h4 {
     @apply font-heading tracking-tight;
+  }
+}
+
+@layer utilities {
+  .survey-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--color-navy-900) 8%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--color-navy-900) 8%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }

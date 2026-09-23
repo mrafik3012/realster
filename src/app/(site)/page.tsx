@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ShieldCheck, MessageCircle, Users } from "lucide-react";
+import { ArrowRight, LandPlot, ScrollText, Users } from "lucide-react";
 import { PropertySearchBar } from "@/components/property-search-bar";
 import { PropertyCard } from "@/components/property-card";
+import { HeroVideo } from "@/components/hero-video";
 import { Button } from "@/components/ui/button";
 import { getFeaturedProperties, getDistinctCities } from "@/lib/data/properties";
 
@@ -15,28 +15,22 @@ export default async function HomePage() {
   return (
     <>
       <section className="relative isolate overflow-hidden">
-        <Image
-          src="/images/hero-main.jpg"
-          alt="Modern house with a pool at dusk"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/30" />
+        <HeroVideo />
+        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/25" />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary/90 via-secondary/40 to-transparent" />
 
         <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
           <div className="max-w-2xl space-y-5">
             <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/20">
-              Buy · Rent · List with a licensed agent
+              Coimbatore · Tamil Nadu · Land first
             </span>
             <h1 className="font-heading text-4xl font-bold text-white sm:text-5xl lg:text-6xl">
-              Find your next property, faster.
+              Land in Coimbatore, listed by the agent who holds it.
             </h1>
             <p className="max-w-xl text-base text-white/80 sm:text-lg">
-              Realster connects buyers and renters directly with the licensed
-              agents managing each listing — no lead forms disappearing into a
-              call center. Search the market or list a property in minutes.
+              Plots, coconut groves, farm parcels, and industrial sites from
+              Pollachi to Mettupalayam. Search by locality — or list the
+              survey number you already know.
             </p>
           </div>
 
@@ -49,26 +43,28 @@ export default async function HomePage() {
       <section className="border-b border-border bg-muted/40">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-10 sm:px-6 sm:grid-cols-3 lg:px-8">
           <div className="flex items-start gap-3">
-            <ShieldCheck className="mt-0.5 size-6 shrink-0 text-primary" />
+            <LandPlot className="mt-0.5 size-6 shrink-0 text-primary" />
             <div>
               <h3 className="font-heading text-sm font-semibold text-foreground">
-                Agent-verified listings
+                Land is the book of business
               </h3>
               <p className="text-sm text-muted-foreground">
-                Every listing is entered and maintained by the licensed agent
-                representing it — not scraped from somewhere else.
+                Residential plots, agricultural land, farms, and industrial
+                parcels — houses appear only when an owner already sold land
+                through us.
               </p>
             </div>
           </div>
           <div className="flex items-start gap-3">
-            <MessageCircle className="mt-0.5 size-6 shrink-0 text-primary" />
+            <ScrollText className="mt-0.5 size-6 shrink-0 text-primary" />
             <div>
               <h3 className="font-heading text-sm font-semibold text-foreground">
-                Talk to the listing agent
+                Patta, FMB, and frontage
               </h3>
               <p className="text-sm text-muted-foreground">
-                Every property page shows the actual agent managing it, with
-                a direct phone number and email.
+                Listings carry what Coimbatore buyers actually ask for: survey
+                numbers, road width, water, and whether DTCP or LPA approval
+                is in place.
               </p>
             </div>
           </div>
@@ -76,11 +72,11 @@ export default async function HomePage() {
             <Users className="mt-0.5 size-6 shrink-0 text-primary" />
             <div>
               <h3 className="font-heading text-sm font-semibold text-foreground">
-                Built for agents, too
+                Talk to the listing agent
               </h3>
               <p className="text-sm text-muted-foreground">
-                Agents get a login, a dashboard, and full control over their
-                own listings — photos, pricing, and status included.
+                Each parcel is managed by a licensed agent in Coimbatore —
+                call or email them from the listing, no routed lead form.
               </p>
             </div>
           </div>
@@ -91,18 +87,17 @@ export default async function HomePage() {
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-heading text-2xl font-bold text-foreground sm:text-3xl">
-              Featured properties
+              Featured land
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              A mix of what&apos;s new and what agents have flagged this
-              week.
+              What agents around Coimbatore have flagged this week.
             </p>
           </div>
           <Link
             href="/properties"
             className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
           >
-            View all properties
+            View all listings
             <ArrowRight className="size-4" />
           </Link>
         </div>
@@ -115,9 +110,9 @@ export default async function HomePage() {
           </div>
         ) : (
           <div className="rounded-xl border border-dashed border-border p-12 text-center text-muted-foreground">
-            No featured properties right now. Check back soon, or{" "}
+            No featured land right now.{" "}
             <Link href="/properties" className="text-primary hover:underline">
-              browse everything on the market
+              Browse every parcel on the market
             </Link>
             .
           </div>
@@ -125,19 +120,19 @@ export default async function HomePage() {
       </section>
 
       {cities.length > 0 && (
-        <section className="border-t border-border bg-muted/40">
+        <section className="survey-grid border-t border-border">
           <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
             <h2 className="mb-6 font-heading text-2xl font-bold text-foreground">
-              Browse by city
+              Browse by locality
             </h2>
             <div className="flex flex-wrap gap-2">
               {cities.map((c) => (
                 <Link
                   key={c.city}
                   href={`/properties?city=${encodeURIComponent(c.city)}`}
-                  className="rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+                  className="rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
                 >
-                  {c.city}, {c.state}
+                  {c.city}
                 </Link>
               ))}
             </div>
@@ -148,12 +143,11 @@ export default async function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6 rounded-2xl bg-secondary px-6 py-12 text-center text-secondary-foreground sm:px-12">
           <h2 className="max-w-xl font-heading text-2xl font-bold sm:text-3xl">
-            Licensed agent? List your properties on Realster.
+            Licensed in Tamil Nadu? List your land on Realster.
           </h2>
           <p className="max-w-lg text-secondary-foreground/75">
-            Create a free agent account, add your license details, and start
-            publishing listings with photos, pricing, and availability status
-            in minutes.
+            Create a free agent account, add your RERA number, and publish
+            plots and farms with photos, extent, and status in minutes.
           </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link href="/register" className="inline-flex">

@@ -48,6 +48,10 @@ yarn-error.log*
 # source assets provided outside the app (already processed into public/images)
 /assets
 
+# remotion
+/remotion/node_modules
+/remotion/out
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

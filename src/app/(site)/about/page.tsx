@@ -1,49 +1,49 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { Search, UserCheck, KeyRound, ClipboardList } from "lucide-react";
+import { LandPlot, UserCheck, KeyRound, ScrollText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About Realster",
-  description: "What Realster is, how it works, and who it's built for.",
+  description: "A Coimbatore land marketplace — plots, farms, and industrial parcels.",
 };
 
 const steps = [
   {
-    icon: Search,
-    title: "Search the market",
-    body: "Filter by city, price, property type, or bedroom count to find listings that match what you're actually looking for.",
+    icon: LandPlot,
+    title: "Search land first",
+    body: "Filter by locality and type — residential plots, agricultural land, farms, industrial or commercial parcels around Coimbatore.",
+  },
+  {
+    icon: ScrollText,
+    title: "Read the parcel, not the brochure",
+    body: "Extent in cents or acres, road frontage, water, DTCP or LPA status, and the survey number sit on the listing.",
   },
   {
     icon: UserCheck,
-    title: "Reach the agent directly",
-    body: "Every listing shows the licensed agent managing it, with a real phone number and email — not a routed lead form.",
-  },
-  {
-    icon: ClipboardList,
-    title: "Agents manage their own listings",
-    body: "Agents log in, add property details and photos, and update pricing or status themselves — no back-office ticket needed.",
+    title: "Call the listing agent",
+    body: "The licensed agent who entered the listing is the person you reach. No call-centre hop.",
   },
   {
     icon: KeyRound,
-    title: "Close the deal off-platform",
-    body: "Realster is the discovery and contact layer. Tours, offers, and paperwork happen the way they always have, with your agent.",
+    title: "Close the usual way",
+    body: "Tours, token, and registration happen with your agent and advocate. Realster is the discovery layer.",
   },
 ];
 
 export default function AboutPage() {
   return (
     <div>
-      <section className="border-b border-border bg-muted/40">
+      <section className="survey-grid border-b border-border">
         <div className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
           <h1 className="font-heading text-3xl font-bold text-foreground sm:text-4xl">
-            A listing platform built around the agent, not around us.
+            A Coimbatore land desk, not a national house portal.
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            Realster exists to do one thing well: connect people looking for
-            a property with the licensed agent who can actually show it to
-            them.
+            Realster is based in Coimbatore, Tamil Nadu. The inventory is
+            land: plots, groves, farms, and industrial parcels. Houses show
+            up only when they sit next to that work.
           </p>
         </div>
       </section>
@@ -52,28 +52,26 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
             <Image
-              src="/images/properties/1615873968403-89e068629265.jpg"
-              alt="Bright living room in a Realster listing"
+              src="/images/properties/1559827260-dc66d52bef19.jpg"
+              alt="Coconut grove of the kind listed around Pollachi"
               fill
               className="object-cover"
             />
           </div>
           <div className="space-y-4">
             <h2 className="font-heading text-2xl font-bold text-foreground">
-              Why listings look different here
+              Why land, and why here
             </h2>
             <p className="text-foreground/90">
-              Most search sites separate you from the person who actually
-              knows the property — the listing gets forwarded, resold as a
-              lead, or answered by whoever&apos;s on shift. On Realster, the
-              agent who lists a property is the same person you call, text,
-              or email straight from the listing page.
+              Coimbatore buyers already speak in cents, Patta, and survey
+              numbers. National house sites bury that under bedrooms and
+              swimming-pool filters. Realster flips the default: extent and
+              locality first, house details only if the listing is a house.
             </p>
             <p className="text-foreground/90">
-              That also means agents are responsible for their own listings.
-              If a price changes or a property goes under contract, the
-              agent updates it themselves from their dashboard, so what you
-              see is what&apos;s current.
+              Agents around Pollachi, Sulur, Annur, and Mettupalayam maintain
+              their own listings. If a price changes or a parcel goes under
+              token, they update it from the dashboard.
             </p>
           </div>
         </div>
@@ -98,11 +96,11 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
         <h2 className="font-heading text-2xl font-bold text-foreground">
-          Are you a licensed agent?
+          Are you a licensed agent in Tamil Nadu?
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Create a free account, verify your license number, and start
-          listing. You control your own photos, pricing, and availability.
+          Create a free account, add your RERA number, and list land you
+          already represent.
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link href="/register">

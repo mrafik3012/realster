@@ -1,12 +1,15 @@
 # Realster
 
-Realster is a real estate listings platform: a public site for browsing
-properties for sale or rent, plus an authenticated dashboard where licensed
-agents log in to publish and manage their own listings.
+Realster is a **Coimbatore, Tamil Nadu** land marketplace: a public site
+for browsing plots, farms, agricultural parcels, and industrial sites,
+plus an authenticated dashboard where licensed agents publish and manage
+their own listings.
 
-This is a demo/portfolio build. The 3 agents and 15 property listings that
-ship in the seed data are fictional, and the property photos are stock
-photography, not real listings.
+Houses exist on the platform but they are secondary. The seed book is
+land-first.
+
+This is a demo/portfolio build. The 3 agents and 15 listings that ship
+in the seed data are fictional. Land photography is stock imagery.
 
 ## Stack
 
@@ -53,10 +56,10 @@ wipes and re-creates the demo agents/properties.
 ### Demo agent login
 
 ```
-maria@realster.com / Realster123!
+kavitha@realster.com / Realster123!
 ```
 
-(Also seeded: `jordan@realster.com` and `priya@realster.com`, same
+(Also seeded: `arun@realster.com` and `meera@realster.com`, same
 password.) Or use "Create agent account" on `/register` to make your own.
 
 ### Environment variables
@@ -85,6 +88,13 @@ is run from.
 - **SQLite** is used for zero-config local storage. Swapping to Postgres
   is a one-line change to `prisma/schema.prisma`'s `datasource` block plus
   a new `DATABASE_URL`.
+- **Hero video** is a Remotion composition (`remotion/`). Rebuild with
+  `npm run video:render` (needs Chrome). The site falls back to the
+  poster still if the video files are missing.
+- **Brand tokens** follow the UI-UX Pro Max three-layer model
+  (`docs/brand-guidelines.md`, `docs/design-tokens.json`,
+  `src/styles/design-tokens.css`). Agent skills used for this build live
+  under `.agents/skills/`.
 
 ## Project structure
 

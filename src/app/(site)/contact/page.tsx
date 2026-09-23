@@ -15,9 +15,9 @@ export default function ContactPage() {
           Get in touch
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Questions about a listing should go straight to the agent on that
-          property&apos;s page. For everything else — platform questions,
-          agent accounts, or general feedback — send us a note.
+          Questions about a parcel should go to the agent on that listing.
+          For platform questions, agent accounts, or anything else about
+          the Coimbatore desk — send a note.
         </p>
       </div>
 
@@ -27,14 +27,14 @@ export default function ContactPage() {
             <Mail className="mt-0.5 size-5 text-primary" />
             <div>
               <p className="font-medium text-foreground">Email</p>
-              <p className="text-sm text-muted-foreground">hello@realster.example</p>
+              <p className="text-sm text-muted-foreground">hello@realster.com</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
             <Phone className="mt-0.5 size-5 text-primary" />
             <div>
               <p className="font-medium text-foreground">Phone</p>
-              <p className="text-sm text-muted-foreground">(800) 555-0100</p>
+              <p className="text-sm text-muted-foreground">+91 422 555 0100</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -42,7 +42,7 @@ export default function ContactPage() {
             <div>
               <p className="font-medium text-foreground">Office</p>
               <p className="text-sm text-muted-foreground">
-                This is a demo platform without a physical office.
+                Coimbatore, Tamil Nadu — demo desk, no walk-in office.
               </p>
             </div>
           </div>

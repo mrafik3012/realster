@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bed, Bath, Ruler, MapPin } from "lucide-react";
+import { MapPin, LandPlot, Bed, Bath } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
-  formatNumber,
+  formatArea,
   formatPrice,
+  isLandType,
   LISTING_TYPE_LABELS,
   PROPERTY_TYPE_LABELS,
 } from "@/lib/utils";
@@ -16,9 +17,10 @@ export type PropertyCardData = {
   listingType: string;
   propertyType: string;
   status: string;
-  bedrooms: number;
-  bathrooms: number;
+  bedrooms: number | null;
+  bathrooms: number | null;
   areaSqft: number;
+  areaUnit?: string;
   city: string;
   state: string;
   featured: boolean;
@@ -27,6 +29,7 @@ export type PropertyCardData = {
 
 export function PropertyCard({ property }: { property: PropertyCardData }) {
   const cover = property.images[0];
+  const land = isLandType(property.propertyType);
 
   return (
     <Link
@@ -55,11 +58,6 @@ export function PropertyCard({ property }: { property: PropertyCardData }) {
               Sold
             </Badge>
           )}
-          {property.status === "PENDING" && (
-            <Badge variant="outline" className="bg-background">
-              Pending
-            </Badge>
-          )}
         </div>
       </div>
 
@@ -68,32 +66,36 @@ export function PropertyCard({ property }: { property: PropertyCardData }) {
           <p className="font-heading text-lg font-semibold text-foreground">
             {formatPrice(property.price, property.listingType as "SALE" | "RENT")}
           </p>
-          <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
+          <span className="shrink-0 rounded-full bg-[var(--color-land)]/15 px-2 py-0.5 text-xs font-medium text-[var(--color-land)]">
             {PROPERTY_TYPE_LABELS[property.propertyType]}
           </span>
         </div>
 
-        <h3 className="line-clamp-1 font-heading text-base font-semibold text-foreground">
+        <h3 className="line-clamp-2 font-heading text-base font-semibold text-foreground">
           {property.title}
         </h3>
 
         <p className="flex items-center gap-1 text-sm text-muted-foreground">
           <MapPin className="size-3.5 shrink-0" />
           <span className="line-clamp-1">
-            {property.city}, {property.state}
+            {property.city}, Coimbatore
           </span>
         </p>
 
         <div className="mt-auto flex items-center gap-4 border-t border-border pt-3 text-sm text-muted-foreground">
           <span className="flex items-center gap-1">
-            <Bed className="size-4" /> {property.bedrooms}
+            <LandPlot className="size-4" /> {formatArea(property.areaSqft, property.areaUnit)}
           </span>
-          <span className="flex items-center gap-1">
-            <Bath className="size-4" /> {property.bathrooms}
-          </span>
-          <span className="flex items-center gap-1">
-            <Ruler className="size-4" /> {formatNumber(property.areaSqft)} sqft
-          </span>
+          {!land && property.bedrooms != null && (
+            <span className="flex items-center gap-1">
+              <Bed className="size-4" /> {property.bedrooms}
+            </span>
+          )}
+          {!land && property.bathrooms != null && (
+            <span className="flex items-center gap-1">
+              <Bath className="size-4" /> {property.bathrooms}
+            </span>
+          )}
         </div>
       </div>
     </Link>

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import {
   Bed,
   Bath,
-  Ruler,
+  LandPlot,
   MapPin,
   Calendar,
   Phone,
@@ -18,9 +18,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
-  formatNumber,
+  formatArea,
   formatPrice,
   initials,
+  isLandType,
   LISTING_TYPE_LABELS,
   PROPERTY_TYPE_LABELS,
   STATUS_LABELS,
@@ -97,28 +98,32 @@ export default async function PropertyDetailPage({
 
           <div className="flex flex-wrap items-center gap-6 rounded-xl border border-border bg-card p-5">
             <div className="flex items-center gap-2">
-              <Bed className="size-5 text-primary" />
-              <div>
-                <p className="font-heading text-lg font-semibold leading-tight">{property.bedrooms}</p>
-                <p className="text-xs text-muted-foreground">Bedrooms</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Bath className="size-5 text-primary" />
-              <div>
-                <p className="font-heading text-lg font-semibold leading-tight">{property.bathrooms}</p>
-                <p className="text-xs text-muted-foreground">Bathrooms</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <Ruler className="size-5 text-primary" />
+              <LandPlot className="size-5 text-primary" />
               <div>
                 <p className="font-heading text-lg font-semibold leading-tight">
-                  {formatNumber(property.areaSqft)}
+                  {formatArea(property.areaSqft, property.areaUnit)}
                 </p>
-                <p className="text-xs text-muted-foreground">Sqft</p>
+                <p className="text-xs text-muted-foreground">Extent</p>
               </div>
             </div>
+            {!isLandType(property.propertyType) && property.bedrooms != null && (
+              <div className="flex items-center gap-2">
+                <Bed className="size-5 text-primary" />
+                <div>
+                  <p className="font-heading text-lg font-semibold leading-tight">{property.bedrooms}</p>
+                  <p className="text-xs text-muted-foreground">Bedrooms</p>
+                </div>
+              </div>
+            )}
+            {!isLandType(property.propertyType) && property.bathrooms != null && (
+              <div className="flex items-center gap-2">
+                <Bath className="size-5 text-primary" />
+                <div>
+                  <p className="font-heading text-lg font-semibold leading-tight">{property.bathrooms}</p>
+                  <p className="text-xs text-muted-foreground">Bathrooms</p>
+                </div>
+              </div>
+            )}
             {property.yearBuilt && (
               <div className="flex items-center gap-2">
                 <Calendar className="size-5 text-primary" />
@@ -132,7 +137,7 @@ export default async function PropertyDetailPage({
 
           <div>
             <h2 className="mb-2 font-heading text-lg font-semibold text-foreground">
-              About this property
+              About this land
             </h2>
             <p className="whitespace-pre-line leading-relaxed text-foreground/90">
               {property.description}
@@ -196,8 +201,8 @@ export default async function PropertyDetailPage({
           </div>
 
           <div className="rounded-xl border border-border bg-muted/40 p-5 text-xs text-muted-foreground">
-            License #{property.agent.licenseNo} · This is a demo listing on a
-            demo real estate platform.
+            License #{property.agent.licenseNo} · Coimbatore listing on a demo
+            Realster platform.
           </div>
         </aside>
       </div>
@@ -205,7 +210,7 @@ export default async function PropertyDetailPage({
       {similar.length > 0 && (
         <section className="mt-16">
           <h2 className="mb-6 font-heading text-xl font-bold text-foreground">
-            Similar properties
+            Nearby land
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {similar.map((item) => (

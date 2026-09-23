@@ -8,7 +8,8 @@
     "start": "next start -p 4127",
     "lint": "eslint",
     "postinstall": "prisma generate",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "video:render": "npm --prefix remotion run render && npm --prefix remotion run render:webm"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

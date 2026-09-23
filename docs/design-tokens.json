@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "brand": "Realster",
+    "skill": "ui-ux-pro-max/design-system",
+    "layers": ["primitive", "semantic", "component"]
+  },
+  "primitive": {
+    "color": {
+      "teal-600": "#1B6D8C",
+      "teal-800": "#124F66",
+      "navy-900": "#102A43",
+      "grove-600": "#6B7D3A",
+      "laterite-500": "#C4784A",
+      "mist-50": "#F4F1EA",
+      "mist-100": "#E8E4D8",
+      "ink-900": "#1A1C16",
+      "white": "#FFFDF8"
+    },
+    "font": {
+      "heading": "Plus Jakarta Sans",
+      "body": "Inter"
+    },
+    "space": {
+      "1": "4px",
+      "2": "8px",
+      "3": "12px",
+      "4": "16px",
+      "6": "24px",
+      "8": "32px",
+      "12": "48px",
+      "16": "64px"
+    }
+  },
+  "semantic": {
+    "color-primary": "{primitive.color.teal-600}",
+    "color-secondary": "{primitive.color.navy-900}",
+    "color-land": "{primitive.color.grove-600}",
+    "color-warm": "{primitive.color.laterite-500}",
+    "color-bg": "{primitive.color.mist-50}",
+    "color-surface": "{primitive.color.white}",
+    "color-fg": "{primitive.color.ink-900}"
+  },
+  "component": {
+    "button-bg": "{semantic.color-primary}",
+    "card-bg": "{semantic.color-surface}",
+    "badge-land-bg": "{semantic.color-land}"
+  }
+}

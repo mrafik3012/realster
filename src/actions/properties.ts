@@ -60,6 +60,7 @@ function parsePropertyForm(formData: FormData) {
     bedrooms: formData.get("bedrooms"),
     bathrooms: formData.get("bathrooms"),
     areaSqft: formData.get("areaSqft"),
+    areaUnit: formData.get("areaUnit") || "CENTS",
     yearBuilt: formData.get("yearBuilt") || "",
     address: formData.get("address"),
     city: formData.get("city"),

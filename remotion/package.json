@@ -1,0 +1,15 @@
+{
+  "name": "realster-hero",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio src/index.ts --no-open",
+    "render": "remotion render src/index.ts Hero ../public/videos/hero.mp4 --overwrite",
+    "render:webm": "remotion render src/index.ts Hero ../public/videos/hero.webm --overwrite --codec=vp8"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.527",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.527"
+  }
+}
