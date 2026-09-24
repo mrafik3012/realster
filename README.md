@@ -75,6 +75,46 @@ SESSION_SECRET="change-me-to-a-long-random-string-in-production"
 same `prisma/dev.db` file regardless of the working directory a command
 is run from.
 
+## Deploy on Hostinger (Node.js web app)
+
+This is a full-stack Next.js app (SSR + server actions + SQLite). It needs
+Hostinger **Node.js web apps** hosting (Business or Cloud), not static
+HTML hosting.
+
+1. Put this project on **GitHub** (Hostinger only imports GitHub repos).
+2. In hPanel: **Websites → Add Website → Node.js web app → Import Git repository**.
+3. Connect GitHub, pick this repo, branch `main`.
+4. Use these settings (Hostinger usually auto-detects Next.js):
+
+   | Setting | Value |
+   |---|---|
+   | Framework | Next.js |
+   | Node.js version | 20 or 22 |
+   | Install command | `npm ci` |
+   | Build command | `npm run build` |
+   | Start command | `npm run start` |
+   | Output directory | `.next` |
+
+   `npm run start` already binds `0.0.0.0` and uses Hostinger's `$PORT`.
+   On first boot it runs Prisma migrations and seeds the demo listings if
+   the database is empty.
+
+5. Add environment variables (import `.env.hostinger.example`, then
+   replace `SESSION_SECRET` with a long random string):
+
+   ```
+   NODE_ENV=production
+   DATABASE_URL=file:./dev.db
+   SESSION_SECRET=your-long-random-secret
+   ```
+
+6. Click **Deploy**. After it is live, demo login is
+   `kavitha@realster.com` / `Realster123!`.
+
+Every later push to `main` rebuilds the site automatically. SQLite lives
+on the Hostinger disk — later deploys keep existing listings unless you
+delete `prisma/dev.db`.
+
 ## Notes & limitations (demo scope)
 
 - **Contact form** (`/contact`) validates and logs submissions server-side
