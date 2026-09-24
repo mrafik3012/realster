@@ -95,6 +95,10 @@ HTML hosting.
    | Start command | `npm run start` |
    | Output directory | `.next` |
 
+   The build uses **Webpack** (`next build --webpack`) because Hostinger’s
+   Linux image has glibc 2.28 — Next.js 16’s default Turbopack build needs
+   glibc 2.29+.
+
    `npm run start` already binds `0.0.0.0` and uses Hostinger's `$PORT`.
    On first boot it runs Prisma migrations and seeds the demo listings if
    the database is empty.

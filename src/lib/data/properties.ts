@@ -71,19 +71,19 @@ export async function getProperties(filters: PropertyFilters = {}) {
 }
 
 export async function getFeaturedProperties(limit = 6, category?: "land" | "homes") {
-  const typeFilter =
-    category === "land"
-      ? { in: ["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL"] as const }
-      : category === "homes"
-        ? { in: ["HOUSE", "APARTMENT"] as const }
-        : undefined;
+  const where: Prisma.PropertyWhereInput = {
+    featured: true,
+    status: "ACTIVE",
+  };
+
+  if (category === "land") {
+    where.propertyType = { in: ["PLOT", "AGRICULTURAL", "FARM", "INDUSTRIAL", "COMMERCIAL"] };
+  } else if (category === "homes") {
+    where.propertyType = { in: ["HOUSE", "APARTMENT"] };
+  }
 
   return prisma.property.findMany({
-    where: {
-      featured: true,
-      status: "ACTIVE",
-      ...(typeFilter ? { propertyType: typeFilter } : {}),
-    },
+    where,
     include: { images: { orderBy: { position: "asc" }, take: 1 }, agent: true },
     orderBy: { createdAt: "desc" },
     take: limit,

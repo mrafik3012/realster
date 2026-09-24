@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 4127",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "node scripts/prepare-db.mjs && next start -H 0.0.0.0 -p ${PORT:-4127}",
     "lint": "eslint",
     "postinstall": "prisma generate",
